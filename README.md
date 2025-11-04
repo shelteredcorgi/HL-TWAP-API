@@ -6,8 +6,6 @@ Open-source tool for fetching and serving historical Time-Weighted Average Price
 
 This project addresses the limitation of Hyperliquid's API, which only returns up to 2,000 TWAP trade records. By fetching data directly from Hyperliquid's S3 buckets and storing it in a relational database, this tool provides complete historical data access for tax compliance, efficient querying by wallet address and date range, daily automated updates, and a RESTful API for integration with tax platforms.
 
-Bounty Project: Built for AwakenTax (6,000 USDC from @big_duca and @SolanaBoomerNFT)
-
 ## Features
 
 - S3 Data Ingestion: Fetch historical TWAP data from Hyperliquid's public S3 buckets
