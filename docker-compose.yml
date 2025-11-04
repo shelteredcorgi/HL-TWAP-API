@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: hl_twap_postgres
+    environment:
+      POSTGRES_USER: hl_twap_user
+      POSTGRES_PASSWORD: hl_twap_password
+      POSTGRES_DB: hl_twap
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hl_twap_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: .
+    container_name: hl_twap_api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://hl_twap_user:hl_twap_password@postgres:5432/hl_twap
+      S3_BUCKET_NAME: hl-mainnet-node-data
+      S3_REGION: us-east-1
+      S3_PREFIX: node_fills_by_block/
+      S3_REQUEST_PAYER: requester
+      API_HOST: 0.0.0.0
+      API_PORT: 8000
+      API_KEY: ${API_KEY:-dev-key-change-in-production}
+      SCHEDULER_ENABLED: "true"
+      SCHEDULER_HOUR: 2
+      SCHEDULER_MINUTE: 0
+      LOG_LEVEL: INFO
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/app/src
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

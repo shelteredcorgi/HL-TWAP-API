@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "hl-twap-api"
+version = "0.1.0"
+description = "Open-source tool for fetching and serving Hyperliquid TWAP trade data"
+authors = ["Community"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.104.1"
+uvicorn = {extras = ["standard"], version = "^0.24.0"}
+sqlalchemy = "^2.0.23"
+psycopg2-binary = "^2.9.9"
+boto3 = "^1.29.7"
+pandas = "^2.1.3"
+APScheduler = "^3.10.4"
+pydantic = "^2.5.0"
+lz4 = "^4.3.2"
+python-dotenv = "^1.0.0"
+alembic = "^1.12.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+pytest-asyncio = "^0.21.1"
+httpx = "^0.25.2"
+black = "^23.11.0"
+flake8 = "^6.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
