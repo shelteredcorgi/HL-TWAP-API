@@ -61,38 +61,6 @@ docker-compose up -d
 - Documentation: http://localhost:8000/docs
 - Health Check: http://localhost:8000/health
 
-### Local Development
-
-1. Install Poetry (if not already installed):
-```bash
-curl -sSL https://install.python-poetry.org | python3 -
-```
-
-2. Install dependencies:
-```bash
-poetry install
-```
-
-3. Set up environment:
-```bash
-cp .env.example .env
-# Edit .env with your configuration
-```
-
-4. Initialize the database:
-```bash
-poetry run python -c "from src.hl_twap_api.models.database import init_db; init_db()"
-```
-
-5. Run the application:
-```bash
-poetry run python -m src.hl_twap_api.main
-```
-
-6. Run tests:
-```bash
-poetry run pytest
-```
 
 ## API Documentation
 
