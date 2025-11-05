@@ -375,12 +375,6 @@ This is an open-source project. Contributions are welcome.
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
-
-- AwakenTax (@big_duca) for sponsoring this bounty project (5,000 USDC)
-- @SolanaBoomerNFT for additional bounty support (1,000 USDC)
-- Hyperliquid for providing public S3 data access
-- The open-source community for the tools used in this project
 
 ## Support
 
